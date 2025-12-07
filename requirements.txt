@@ -1,0 +1,10 @@
+flask
+flask-cors
+pandas
+scikit-learn
+numpy
+xgboost
+lightgbm
+catboost
+imbalanced-learn
+scipy
