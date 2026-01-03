@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Testing
+test_*.py
+*.test.py
+
+# Local development
+catboost_info/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

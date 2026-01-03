@@ -91,11 +91,27 @@ def perform_analysis(filepath):
     results = {}
     
     # Correlation Analysis
-    corr_matrix = data[['LAR', 'PCT', 'Outcome']].corr()
+    # Correlation Analysis
+    from scipy import stats
+    
+    # helper for p-value
+    def get_corr_p(s1, s2):
+        # drop na for valid calculation
+        mask = ~np.isnan(s1) & ~np.isnan(s2)
+        if np.sum(mask) < 2: return np.nan, np.nan
+        return stats.pearsonr(s1[mask], s2[mask])
+
+    corr_lar_pct, p_lar_pct = get_corr_p(data['LAR'], data['PCT'])
+    corr_lar_out, p_lar_out = get_corr_p(data['LAR'], data['Outcome'])
+    corr_pct_out, p_pct_out = get_corr_p(data['PCT'], data['Outcome'])
+
     results['correlation'] = {
-        'LAR_PCT': corr_matrix.loc['LAR', 'PCT'],
-        'LAR_Outcome': corr_matrix.loc['LAR', 'Outcome'],
-        'PCT_Outcome': corr_matrix.loc['PCT', 'Outcome']
+        'LAR_PCT': corr_lar_pct,
+        'LAR_PCT_P_Value': p_lar_pct,
+        'LAR_Outcome': corr_lar_out,
+        'LAR_Outcome_P_Value': p_lar_out,
+        'PCT_Outcome': corr_pct_out,
+        'PCT_Outcome_P_Value': p_pct_out
     }
 
     # Model configurations

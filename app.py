@@ -13,6 +13,11 @@ if not os.path.exists(UPLOAD_FOLDER):
 
 last_uploaded_file = None
 
+@app.route('/')
+def health_check():
+    """Health check endpoint for Render"""
+    return jsonify({'status': 'healthy', 'message': 'Sepsis ML Backend is running'})
+
 @app.route('/analyze', methods=['POST', 'OPTIONS'])
 def analyze():
     if request.method == 'OPTIONS':

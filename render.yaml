@@ -1,0 +1,13 @@
+# Render Blueprint - Deploys this backend as a web service
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: sepsis-ml-backend
+    runtime: docker
+    region: oregon # or choose: ohio, virginia, frankfurt, singapore
+    plan: free # options: free, starter, standard, pro
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11

@@ -8,3 +8,4 @@ lightgbm
 catboost
 imbalanced-learn
 scipy
+gunicorn
