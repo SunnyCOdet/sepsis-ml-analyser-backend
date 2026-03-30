@@ -9,3 +9,5 @@ catboost
 imbalanced-learn
 scipy
 gunicorn
+statsmodels
+openpyxl
